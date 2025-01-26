@@ -1,0 +1,13 @@
+{% extends "main/base.html" %}
+{% block title %} Вход в систему {% endblock %}
+{% block body %}
+    {% load crispy_forms_tags %}
+        <h1>Вход в систему</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ login_form|crispy }}
+            <button class="btn btn-primary" type="submit">Войти</button>
+        </form>
+        <p class="text-center">У вас нет аккаунта? <a href="/register">Создайте сейчас</a>.</p>
+
+{% endblock %}

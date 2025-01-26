@@ -1,0 +1,113 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}
+    Главная страница
+{% endblock %}
+
+{% block body %}
+    <!--suppress ALL -->
+    <main>
+        <div class="px-4 py-5 my-5 text-center rounded-3 border shadow-lg">
+            <img class="d-block mx-auto mb-4" src="{% static 'main/img/Screenshot_9.png' %}" alt="" width="105" height="97">
+            <h1 class="display-5 fw-bold text-body-emphasis">Univer.BY: ваш надёжный проводник в мир образования</h1>
+            <div class="col-lg-6 mx-auto">
+                <p class="lead mb-4">Univer.BY — это образовательная онлайн-компания, которая помогает студентам найти
+                    свой путь в мире высшего образования. Мы предлагаем широкий спектр услуг, направленных на облегчение
+                    процесса обучения
+                    и обеспечение необходимой информацией для принятия взвешенного решения.</p>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                </div>
+            </div>
+        </div>
+
+        <p class="border-bottom"></p>
+
+        <div class="px-4 pt-5 my-5 text-center border-bottom rounded-3 border shadow-lg">
+            <h1 class="display-4 fw-bold text-body-emphasis">Удобный дизайн</h1>
+            <div class="col-lg-6 mx-auto">
+                <p class="lead mb-4">Навигация интуитивно понятна, позволяя пользователям легко находить нужную
+                    информацию. Структура сайта логична и удобна для восприятия.
+
+                    Элементы дизайна, такие как иконки, иллюстрации и изображения, дополняют текст и делают его более
+                    наглядным. Фотографии и иллюстрации высокого качества, соответствующие тематике сайта.
+
+                    Микроразметка и адаптивный дизайн обеспечивают корректное отображение сайта на различных
+                    устройствах. Это важно для пользователей, посещающих сайт с мобильных устройств.</p>
+            </div>
+            <div class="overflow-hidden" style="max-height: 30vh;">
+                <div class="container px-5">
+                    <img src="{% static 'main/img/Screenshot_20.png' %}" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
+                </div>
+            </div>
+        </div>
+        <p class="border-bottom"></p>
+        <div class="container col-xxl-8 px-4 py-5">
+            <div class="row flex-lg-row-reverse align-items-center g-5 py-5 rounded-3 border shadow-lg">
+                <div class="col-10 col-sm-8 col-lg-6">
+                    <img src="{% static 'main/img/Screenshot_10.png' %}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+                </div>
+                <div class="col-lg-6">
+                    <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Подбор университетов</h1>
+                    <p class="lead">Мы помогаем вам подобрать университеты, которые соответствуют вашим интересам,
+                        целям и возможностям. Наши эксперты проводят оценку университетов по различным параметрам,
+                        чтобы предложить вам наиболее подходящие варианты.</p>
+                </div>
+            </div>
+        </div>
+
+        <p class="border-bottom"></p>
+
+        <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+            <div class="row align-items-center g-lg-5 py-5 rounded-3 border shadow-lg">
+                <div class="col-lg-7 text-center text-lg-start">
+                    <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Удобное хранение конспектов и презентаций</h1>
+                    <p class="col-lg-10 fs-4">Мы рады представить вам нашу платформу, созданную специально для студентов. Это идеальное место для хранения и упорядочивания ваших учебных материалов.
+
+                        Вы можете загружать конспекты, презентации, заметки и любые другие учебные ресурсы, а также делиться ими с преподавателями и однокурсниками. Это поможет вам лучше структурировать информацию и быстрее находить необходимые материалы перед экзаменами и контрольными работами.
+
+                        Кроме того, на нашем сайте вы сможете создавать презентации, конспекты и многое другое. Просто войдите в свой аккаунт — и начните творить!</p>
+                </div>
+            </div>
+        </div>
+
+        <p class="border-bottom"></p>
+
+        <div class="container my-5">
+            <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+                <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+                    <h1 class="display-4 fw-bold lh-1 text-body-emphasis">Научные публикации</h1>
+                    <p class="lead">Кроме того, у нас есть ценные научные публикации, которые могут быть интересны
+                        студентам и преподавателям. Чтобы ознакомиться с ними, необходимо войти в свой аккаунт или
+                        зарегистрироваться. Эти материалы представляют большую ценность для образовательного процесса и
+                        научных исследований. Они содержат актуальную информацию и результаты последних исследований в
+                        различных областях знания. Мы уверены, что они будут полезны для вашего профессионального роста
+                        и развития.</p>
+                </div>
+                <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+                    <img class="rounded-lg-3" src="{% static 'main/img/Screenshot_18.png' %}" alt="" width="720">
+                </div>
+            </div>
+        </div>
+
+        <p class="border-bottom"></p>
+
+        <div class="px-4 py-5 text-center rounded-3 border shadow-lg">
+            <div class="py-5">
+                <h1 class="display-5 fw-bold text-white">Дополнительная информация</h1>
+                <div class="col-lg-6 mx-auto">
+                    <p class="fs-5 mb-4">После регистрации вы сможете создавать свои материалы, загружать их на платформу и делиться ими с другими пользователями.
+
+                        Если у вас возникнут вопросы или нужна помощь, вы всегда можете обратиться в службу поддержки. Мы постараемся помочь вам как можно быстрее.</p>
+                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                        <a class="btn btn-outline-success btn-lg px-4 gap-3" href="about"><i class="fa-solid fa-ellipsis"></i> Подробнее</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="b-example-divider mb-0"></div>
+    </main>
+{% endblock %}
+
