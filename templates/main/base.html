@@ -1,6 +1,7 @@
 {% load static %}
 <!doctype html>
 
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,26 +18,32 @@
 </head>
 <body>
 <div class="container">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4
+    border-bottom">
         <div class="col-md-3 mb-2 mb-md-0">
-            <img style="width: 300px;" class="header__img" src="{% static 'main/img/Screenshot_1.png' %}" alt="Univer.By">
+            <img style="width: 300px;" class="header__img" src="{% static 'main/img/Screenshot_1.png' %}"
+                 alt="Univer.By">
             <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"></svg>
         </div>
-
+            <button class="btn btn-outline-secondary" id="themeToggle"><i class="fa-duotone fa-solid
+            fa-circle-half-stroke"></i></button>
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a href="{% url 'home' %}" class="nav-link px-2 link-success">Главная</a></li>
-            <li><a href="premium" class="nav-link px-2 link-success">UniverPremium</a></li>
-            <li><a href="instetyt" class="nav-link px-2 link-success">Институты</a></li>
-            <li><a href="#" class="nav-link px-2 link-success">UniverPublic</a></li>
+            <li><a href="{% url 'premium' %}" class="nav-link px-2 link-success">UniverPremium</a></li>
+            <li><a href="" class="nav-link px-2 link-success">Институты</a></li>
+            <li><a href="" class="nav-link px-2 link-success">UniverPublic</a></li>
             <li><a href="{% url 'about' %}" class="nav-link px-2 link-success">О нас</a></li>
         </ul>
 
-        <div class="col-md-3 text-end">
+        <div class="">
             {% if user.is_authenticated %}
-                <a class="btn btn-outline-warning btn-lg px-4" href="logout"><i class="fa-duotone fa-solid fa-right-to-bracket"></i>Выход</a>
+                <a class="btn btn-outline-warning btn-lg px-4" href="{% url 'logout' %}">
+                    <i class="fa-duotone fa-solid fa-right-to-bracket"></i> Выход</a>
             {% else %}
-                <a class="btn btn-success btn-lg px-4 gap-3" href="register"><i class="fa-duotone fa-solid fa-user"></i> Регистрация</a>
-                <a class="btn btn-outline-success btn-lg px-4" href="login"><i class="fa-duotone fa-solid fa-right-to-bracket"></i> Вход</a>
+                <a class="btn btn-success btn-lg px-4 gap-3" href="{% url 'register' %}">
+                    <i class="fa-duotone fa-solid fa-user"></i> Регистрация</a>
+                <a class="btn btn-outline-success btn-lg px-4" href="{% url 'login' %}">
+                    <i class="fa-duotone fa-solid fa-right-to-bracket"></i> Вход</a>
             {% endif %}
         </div>
         {% if messages %}
@@ -46,6 +53,90 @@
         {% endif %}
         {% block body %}{% endblock %}
     </header>
+    <div class="container">
+  <footer class="py-5">
+    <div class="row">
+      <div class="col-6 col-md-2 mb-3">
+        <h5>Главная</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Главная</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">О нас</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Универы</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Новостной блог</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Все функции сайта</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-2 mb-3">
+        <h5>Премиум</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">UniverPremium</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Тарифы</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Бот для оплаты</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Акции</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Активация ключа</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-2 mb-3">
+        <h5>Аккаунт</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Вход</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Регистрация</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Выход</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Статус</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Профиль</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-5 offset-md-1 mb-3">
+        <form>
+          <h5>Подпишитесь на нашу рассылку</h5>
+          <p>Ежемесячная сборка всего нового и интересного от нас.</p>
+          <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+            <label for="newsletter1" class="visually-hidden">Email</label>
+            <input id="newsletter1" type="text" class="form-control" placeholder="email@example.com">
+            <input class="btn btn-outline-secondary" type="submit" value="Подписатся">
+          </div>
+         <p></p>
+        </form>
+       <button class="btn btn-outline-secondary" id="themeToggle2">
+             <i class="fa-duotone fa-solid fa-circle-half-stroke"></i> Сменить тему</button>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+      <p>© 2025 Univer.BY, Inc. Все права защищены.</p>
+      <ul class="list-unstyled d-flex">
+        <li class="ms-3"><a style="color: black;" class="link-body-emphasis" href="#">
+            <i class="fa-brands fa-twitter fa-2xl"></i></a></li>
+        <li class="ms-3"><a style="color: black;" class="link-body-emphasis" href="#">
+            <i class="fa-brands fa-instagram fa-2xl"></i></a></li>
+        <li class="ms-3"><a style="color: black;" class="link-body-emphasis" href="#">
+        <i class="fa-brands fa-facebook fa-2xl"></i></a></li>
+      </ul>
+    </div>
+  </footer>
 </div>
+</div>
+<!--suppress ChainedFunctionCallJS, AnonymousFunctionJS, XHTMLIncompatabilitiesJS, ConstantOnRightSideOfComparisonJS -->
+<script>
+    document.getElementById('themeToggle').addEventListener('click', function() {
+    const currentTheme = document.body.className;
+    if (currentTheme === 'dark-theme') {
+        document.body.className = 'light-theme';
+    } else {
+        document.body.className = 'dark-theme';
+    }
+});
+        document.getElementById('themeToggle2').addEventListener('click', function() {
+    const currentTheme = document.body.className;
+    if (currentTheme === 'dark-theme') {
+        document.body.className = 'light-theme';
+    } else {
+        document.body.className = 'dark-theme';
+    }
+});
+</script>
 </body>
 </html>

@@ -1,3 +1,26 @@
+body {
+    font-family: Arial, sans-serif;
+    transition: background-color 1s ease;
+}
+body.light-theme {
+    background-color: #ffffff;
+    color: #000000;
+}
+body.dark-theme {
+    background-color: #2f2f2f;
+    color: #ffffff;
+}
+
+a, .btn {
+    transition: transform .6s ease;
+}
+
+a:hover, .btn:hover {
+    transform: scale(1.05);
+}
+
+
+
 .error {
     font-size: 0.875rem;
     font-weight: 700;

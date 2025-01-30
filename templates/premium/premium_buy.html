@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+    Оплата
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h2>Для оплаты используйте нашего бота</h2>
+        <a target="_blank" class="btn btn-primary btn-lg" href="https://t.me/univerpayrobot">
+            <i class="fa-brands fa-telegram"></i> Перейти в бота</a>
+    </div>
+    <p> </p>
+    <div class="container">
+        <h4>После завершения оплаты перейдети не страницу активации, нажав кнопку ниже.</h4>
+        <a target="_blank" class="btn btn-warning btn-lg" href="{% url 'premium_activate' %}">Активация</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}
+Тарифы
+{% endblock %}
+
+{% block body %}
+    <!--suppress LongLine -->
+    <link rel="stylesheet" href={% static 'premium/css/pricing.css' %}>
+    <div class="container">
+        <div class="tariff" id="tariff">
+            <h2>Тарифные планы</h2>
+            <div class="tarif-radio">
+                <div class="label">
+                    <div class="top">
+                        <span class="name">Базовый</span>
+                        <span class="price">0 Br<span>/вечно</span></span>
+                    </div>
+                    <div class="info">
+                        <i class="fa-solid fa-check" style="color: #019a01;"></i> Ограниченный доступ к базе<hr>
+                        <i class="fa-solid fa-check" style="color: #019a01;"></i> Ограниченный доступ к магазину и мероприятиям<hr>
+                        <span class="opacity50"><i class="fa-solid fa-xmark" style="color: #db0000;"></i> Реклама на сайте</span><hr>
+                        <span class="opacity50"><i class="fa-solid fa-xmark" style="color: #db0000;"></i> Доп-функции и предложения</span><hr>
+                        <span class="opacity50"><i class="fa-solid fa-xmark" style="color: #db0000;"></i> Исследовательские проекты и тесты</span><hr>
+                        <h6>Для учителей и ректоров:</h6>
+                        <i class="fa-solid fa-check" style="color: #019a01;"></i> Публикация тестов<hr>
+                        <span class="opacity50"><i class="fa-solid fa-xmark" style="color: #db0000;"></i> Выделяющиеся сообщения</span><hr>
+                        <span class="opacity50"><i class="fa-solid fa-xmark" style="color: #db0000;"></i> Создание мерча </span><hr>
+                        <span class="opacity50"><i class="fa-solid fa-xmark" style="color: #db0000;"></i> Приоритетная техподдержка</span><hr>
+                    </div>
+                    <a target="_blank" href="https://t.me/univerpayrobot" class="btn btn-outline-primary">Купить сейчас</a>
+                    <p></p>
+                </div>
+
+                <div class="label">
+                    <div class="top">
+                        <span class="name">Старт</span>
+                        <span class="price">45 Br<span>/месяц</span></span>
+                    </div>
+                    <div class="info">
+                        <i class="fa-solid fa-check" style="color: #019a01;"></i> Больше доступа к базе<hr>
+                        <i class="fa-solid fa-check" style="color: #019a01;"></i> Ограниченный доступ к мероприятиям<hr>
+                        <i class="fa-solid fa-check" style="color: #019a01;"></i> Отсутствие рекламы<hr>
+                        <span class="opacity50"><i class="fa-solid fa-xmark" style="color: #db0000;"></i> Доп-функции и предложения</span><hr>
+                        <span class="opacity50"><i class="fa-solid fa-xmark" style="color: #db0000;"></i> Исследовательские проекты и тесты</span><hr>
+                        <h6>Для учителей и ректоров:</h6>
+                        <i class="fa-solid fa-check" style="color: #019a01;"></i> Публикация тестов<hr>
+                        <i class="fa-solid fa-check" style="color: #019a01;"></i> Выделяющиеся сообщения<hr>
+                        <span class="opacity50"><i class="fa-solid fa-xmark" style="color: #db0000;"></i> Создание мерча </span><hr>
+                        <span class="opacity50"><i class="fa-solid fa-xmark" style="color: #db0000;"></i> Приоритетная техподдержка</span><hr>
+                    </div>
+                    <a target="_blank" href="https://t.me/univerpayrobot" class="btn btn-outline-primary">Купить сейчас</a>
+                    <p></p>
+                </div>
+
+                <div class="label megaprem prem">
+                    <div class="top">
+                        <span class="name">Бизнес</span>
+                        <span class="price">100 Br<span>/месяц</span></span>
+                    </div>
+                    <div class="info">
+                        <i class="fa-solid fa-check" style="color: #019a01;"></i> Полный доступ к базе<hr>
+                        <i class="fa-solid fa-check" style="color: #019a01;"></i> Доступ к мероприятиям<hr>
+                        <i class="fa-solid fa-check" style="color: #019a01;"></i> Отсутствие рекламы<hr>
+                        <i class="fa-solid fa-check" style="color: #019a01;"></i> Доп-функции и предложения<hr>
+                        <span class="opacity50"><i class="fa-solid fa-xmark" style="color: #db0000;"></i> Исследовательские проекты и тесты</span><hr>
+                        <h6>Для учителей и ректоров:</h6>
+                        <i class="fa-solid fa-check" style="color: #019a01;"></i> Публикация тестов<hr>
+                        <i class="fa-solid fa-check" style="color: #019a01;"></i> Выделяющиеся сообщения<hr>
+                        <i class="fa-solid fa-check" style="color: #019a01;"></i> Создание мерча<hr>
+                        <span class="opacity50"><i class="fa-solid fa-xmark" style="color: #db0000;"></i> Приоритетная техподдержка</span><hr>
+                    </div>
+                    <a target="_blank" href="https://t.me/univerpayrobot" class="btn btn-primary">Купить сейчас</a>
+                    <p></p>
+                </div>
+
+                <div class="label megaprem">
+                    <div class="top">
+                        <span class="name">Премиум</span>
+                        <span class="price">150 Br<span>/месяц</span></span>
+                    </div>
+                    <div class="info">
+                        <i class="fa-solid fa-check" style="color: #019a01;"></i> Полный доступ к базе<hr>
+                        <i class="fa-solid fa-check" style="color: #019a01;"></i> Доступ ко всем конференциям и мероприятиям<hr>
+                        <i class="fa-solid fa-check" style="color: #019a01;"></i> Отсутствие рекламы<hr>
+                        <i class="fa-solid fa-check" style="color: #019a01;"></i> Доп-функции и предложения<hr>
+                        <i class="fa-solid fa-check" style="color: #019a01;"></i> Исследовательские проекты и тесты<hr>
+                        <h6>Для учителей и ректоров:</h6>
+                        <i class="fa-solid fa-check" style="color: #019a01;"></i> Публикация тестов<hr>
+                        <i class="fa-solid fa-check" style="color: #019a01;"></i> Выделяющиеся сообщения<hr>
+                        <i class="fa-solid fa-check" style="color: #019a01;"></i> Создание мерча<hr>
+                        <i class="fa-solid fa-check" style="color: #019a01;"></i> Приоритетная техподдержка<hr>
+                    </div>
+                    <a target="_blank" href="https://t.me/univerpayrobot" class="btn btn-primary">Купить сейчас</a>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="more_tariffs mt30">
+                <b>Нужен более расширенный тариф? <a target="_blank" href="https://t.me/univerpayrobot">Напишите нам</a></b>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
