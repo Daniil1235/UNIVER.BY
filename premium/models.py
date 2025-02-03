@@ -26,29 +26,12 @@ class Plan(models.Model):
         verbose_name_plural = "Планы"
 
 
-def gener_key():
-    digits = "0123456789"
-    letters = "abcdefghijklmnopqrstuvwxyz"
-    key = ""
-    for i in range(5):
-        if i != 0:
-            key += "-"
-        for q in range(5):
-            ltype = random.randint(0, 1)
-            if ltype:
-                key += random.choice(digits)
-            else:
-                key += random.choice(letters)
-    return key
-
-
-
 
 class License(models.Model):
     id = models.AutoField(primary_key=True)
     time_limit = models.ForeignKey(TimeLimit, on_delete=models.CASCADE, verbose_name="Лимит")
     plan = models.ForeignKey(Plan, on_delete=models.CASCADE, verbose_name="План")
-    key = models.CharField(max_length=100, verbose_name="Ключ", blank=True, default=gener_key())
+    key = models.CharField(max_length=100, verbose_name="Ключ")
 
     def __str__(self):
         return self.key
