@@ -2,6 +2,7 @@
 <!doctype html>
 
 
+<!--suppress LongLine -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -37,12 +38,12 @@
             fa-circle-half-stroke"></i></button>
         <div class="">
             {% if user.is_authenticated %}
-                <a class="btn btn-outline-warning btn-lg px-4" href="{% url 'logout' %}">
+                <a class="btn btn-outline-warning btn-lg px-4" href="{% url 'logout' %}?red={{ request.path }}">
                     <i class="fa-duotone fa-solid fa-right-to-bracket"></i> Выход</a>
             {% else %}
-                <a class="btn btn-success btn-lg px-4 gap-3" href="{% url 'register' %}">
+                <a class="btn btn-success btn-lg px-4 gap-3" href="{% url 'register' %}?red={{ request.path }}">
                     <i class="fa-duotone fa-solid fa-user"></i> Регистрация</a>
-                <a class="btn btn-outline-success btn-lg px-4" href="{% url 'login' %}">
+                <a class="btn btn-outline-success btn-lg px-4" href="{% url 'login' %}?red={{ request.path }}">
                     <i class="fa-duotone fa-solid fa-right-to-bracket"></i> Вход</a>
             {% endif %}
         </div>
@@ -51,7 +52,9 @@
                 <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
             {% endfor %}
         {% endif %}
+        <div class="container">
         {% block body %}{% endblock %}
+        </div>
     </header>
     <div class="container">
   <footer class="py-5">
@@ -59,8 +62,8 @@
       <div class="col-6 col-md-2 mb-3">
         <h5>Главная</h5>
         <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Главная</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">О нас</a></li>
+          <li class="nav-item mb-2"><a href="{% url 'home' %}" class="nav-link p-0 text-body-secondary link-success">Главная</a></li>
+          <li class="nav-item mb-2"><a href="{% url 'about' %}" class="nav-link p-0 text-body-secondary link-success">О нас</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Универы</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Новостной блог</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Все функции сайта</a></li>
@@ -70,20 +73,20 @@
       <div class="col-6 col-md-2 mb-3">
         <h5>Премиум</h5>
         <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">UniverPremium</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Тарифы</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Бот для оплаты</a></li>
+          <li class="nav-item mb-2"><a href="{% url 'premium' %}" class="nav-link p-0 text-body-secondary link-success">UniverPremium</a></li>
+          <li class="nav-item mb-2"><a href="{% url 'pricing' %}" class="nav-link p-0 text-body-secondary link-success">Тарифы</a></li>
+          <li class="nav-item mb-2"><a href="{% url 'premium_buy' %}" class="nav-link p-0 text-body-secondary link-success">Бот для оплаты</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Акции</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Активация ключа</a></li>
+          <li class="nav-item mb-2"><a href="#{% url 'premium_activate' %}" class="nav-link p-0 text-body-secondary link-success">Активация ключа</a></li>
         </ul>
       </div>
 
       <div class="col-6 col-md-2 mb-3">
         <h5>Аккаунт</h5>
         <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Вход</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Регистрация</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Выход</a></li>
+          <li class="nav-item mb-2"><a href="{% url 'login' %}?red={{ request.path }}" class="nav-link p-0 text-body-secondary link-success">Вход</a></li>
+          <li class="nav-item mb-2"><a href="{% url 'register' %}?red={{ request.path }}" class="nav-link p-0 text-body-secondary link-success">Регистрация</a></li>
+          <li class="nav-item mb-2"><a href="{% url 'logout' %}?red={{ request.path }}" class="nav-link p-0 text-body-secondary link-success">Выход</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Статус</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Профиль</a></li>
         </ul>
@@ -108,11 +111,11 @@
     <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
       <p>© 2025 Univer.BY, Inc. Все права защищены.</p>
       <ul class="list-unstyled d-flex">
-        <li class="ms-3"><a style="color: black;" class="link-body-emphasis" href="#">
-            <i class="fa-brands fa-twitter fa-2xl"></i></a></li>
-        <li class="ms-3"><a style="color: black;" class="link-body-emphasis" href="#">
+        <li class="ms-3"><a style="color: black;" class="link-body-emphasis" target="blank" href="https://t.me/univer_by">
+            <i class="fa-brands fa-telegram fa-2xl"></i></a></li>
+        <li class="ms-3"><a style="color: black;" class="link-body-emphasis" target="blank" href="#">
             <i class="fa-brands fa-instagram fa-2xl"></i></a></li>
-        <li class="ms-3"><a style="color: black;" class="link-body-emphasis" href="#">
+        <li class="ms-3"><a style="color: black;" class="link-body-emphasis" target="blank" href="#">
         <i class="fa-brands fa-facebook fa-2xl"></i></a></li>
       </ul>
     </div>
