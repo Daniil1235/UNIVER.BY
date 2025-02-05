@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.signals import pre_delete
+from django.dispatch.dispatcher import receiver
 
 
 class Country(models.Model):
@@ -35,6 +37,10 @@ class Direction(models.Model):
         verbose_name_plural = "Направления"
 
 
+def univer_photo_path(instance, filename):
+    return f"univers/static/univers/img/photos/{instance.name}.jpg"
+
+
 # noinspection LongLine
 class Univer(models.Model):
     id = models.AutoField(primary_key=True)
@@ -44,6 +50,7 @@ class Univer(models.Model):
     address = models.CharField("Адрес", max_length=150)
     number = models.CharField("Номер телефона", max_length=50, help_text="Введите номер телефона в формате +XXX (XX) XXX-XX-XX")
     email = models.CharField("email", max_length=150, blank=True, null=True)
+    photo = models.ImageField("Фото", upload_to=univer_photo_path)
     website = models.CharField("Оффициальный сайт", max_length=150)
 
     twitter = models.CharField("twitter", max_length=150, blank=True, null=True)
@@ -65,3 +72,9 @@ class Univer(models.Model):
     class Meta:
         verbose_name = "Универ"
         verbose_name_plural = "Универы"
+
+
+
+@receiver(pre_delete, sender=Univer)
+def univer_delete(sender, instance, **kwargs):
+    instance.photo.delete(False)

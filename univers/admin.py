@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.db.models import QuerySet
 from .models import Univer, Country, Subject, Direction
 
 
@@ -9,9 +10,10 @@ class UniverAdmin(admin.ModelAdmin):
     list_editable = ('bysite',)
     list_filter = ('country', 'subjects', 'directions')
     filter_horizontal = ('subjects', 'directions')
+    ordering = ('name',)
     fieldsets = (
         (None, {"fields": ("name", "description")}),
-        ("Основная информация", {"fields": ("country", "address", "number", "email", "website")}),
+        ("Основная информация", {"fields": ("country", "address", "number", "email", "photo", "website")}),
         ("Предметы и направления", {"fields": ("subjects", "directions")}),
         (
             "Социальные сети",
