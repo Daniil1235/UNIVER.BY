@@ -1,7 +1,7 @@
 from django.forms import ModelForm, Textarea, TextInput, DateTimeInput, Select, RadioSelect
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from main.models import User
 
 
 class NewUserForm(UserCreationForm):

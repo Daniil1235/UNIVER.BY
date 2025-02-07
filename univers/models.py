@@ -1,3 +1,4 @@
+import os
 from django.db import models
 from django.db.models.signals import pre_delete
 from django.dispatch.dispatcher import receiver
@@ -38,6 +39,8 @@ class Direction(models.Model):
 
 
 def univer_photo_path(instance, filename):
+    if os.path.exists(f"univers/static/univers/img/photos/{instance.name}.jpg"):
+        os.remove(f"univers/static/univers/img/photos/{instance.name}.jpg")
     return f"univers/static/univers/img/photos/{instance.name}.jpg"
 
 
