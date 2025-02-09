@@ -129,33 +129,6 @@
   </footer>
 </div>
 </div>
-<!--suppress ChainedFunctionCallJS, AnonymousFunctionJS, XHTMLIncompatabilitiesJS, ConstantOnRightSideOfComparisonJS -->
-<script>
-    const currentTheme = sessionStorage.getItem('CurrentTheme');
-     if (currentTheme === 'dark-theme') {
-        document.body.className = 'dark-theme';
-    } else {
-        document.body.className = 'light-theme';
-    }
-    document.getElementById('themeToggle').addEventListener('click', function() {
-    const currentTheme = sessionStorage.getItem('CurrentTheme');
-    console.log(currentTheme);
-    if (currentTheme === 'dark-theme') {
-        document.body.className = 'light-theme';
-        sessionStorage.setItem('CurrentTheme', 'light-theme')
-    } else {
-        document.body.className = 'dark-theme';
-        sessionStorage.setItem('CurrentTheme', 'dark-theme')
-    }
-});
-        document.getElementById('themeToggle2').addEventListener('click', function() {
-    const currentTheme = document.body.className;
-    if (currentTheme === 'dark-theme') {
-        document.body.className = 'light-theme';
-    } else {
-        document.body.className = 'dark-theme';
-    }
-});
-</script>
+<script src="{% static 'main/js/script.js' %}"></script>
 </body>
 </html>

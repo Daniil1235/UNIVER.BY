@@ -25,8 +25,7 @@ def register_request(request):
             messages.success(request, "Успешная регистрация")
             return redirect(red)
         messages.error(request, "При регистрации произошла ошибка. Убедитесь, что данные введены верно")
-    form = NewUserForm()
-    return render(request=request, template_name="main/register.html", context={"register_form": form})
+    return render(request=request, template_name="main/register.html")
 
 
 def login_request(request):
@@ -46,8 +45,7 @@ def login_request(request):
                 messages.error(request, "Неверное имя или пароль")
         else:
             messages.error(request, "Неверное имя или пароль")
-    form = AuthenticationForm()
-    return render(request=request, template_name="main/login.html", context={"login_form": form})
+    return render(request=request, template_name="main/login.html")
 
 
 def logout_request(request):

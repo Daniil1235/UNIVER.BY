@@ -10,56 +10,9 @@ body.dark .tariff .more_tariffs {
     border: none;
 }
 body {
-    --a-color: #307BE5;
-    --a-color-hover: #D83145;
-    --button-blue: #3D73E2;
-    --button-blue-hover: #4267C4;
-    --rgb-button-blue: 61,115,226;
-    --general-bg-project: #F6F7F9;
-    --general-bg-project-rgba: 242,243,244;
     --rgba-black-white: 23,33,43;
-    --rgba-white-black: 255,255,255;
     --inver-black-white: #000000;
-    --inver-color-666: #666666;
-    --head-bg: #4F5B6D;
     --general-bg-main: #FFFFFF;
-    --no-left-menu-bg: linear-gradient(#F7F9FC,#F1EFF7);
-    --general-bg-tools: #F7F7F7;
-    --general-hover-tools: #F2F2F2;
-    --general-color-main: #333333;
-    --general-color-main-hover: #3A59EE;
-    --other-border-head: #EDEDED;
-    --other-color-quest: #262F4C;
-    --other-leftmenu-dopinfo: #FFFFFF;
-    --table-border-bottom: #F9F9F9;
-    --upload-files-monogray: #EFF2F5;
-    --input-text: #FFFFFF;
-    --input-box: rgba(0,0,50,0.025);
-    --sweet-for-menu: #FFFFFF;
-    --modal: #FFFFFF;
-    --support-my-mess: #EFFDDE;
-    --support-inver-mess: #FFFFFF;
-    --modal-title-bg: #F5F5F5;
-    --modal-title-border: rgba(0,0,0,.03);
-    --shadow-content: 0 0 15px rgba(0,0,0,0.045);
-    --shadow-button: 0 1px 5px 0 rgba(0,0,0,.08),0 0 1px 0 rgba(0,0,0,.15);
-    --shadow-1: 0 1px 3px 0 rgba(0,0,0,.1),0 0 1px 0 rgba(0,0,0,.2);
-    --shadow-2: 0 2px 8px 0 rgba(0,0,0,.1),0 0 1px 0 rgba(0,0,0,.2);
-    --shadow-3: 0 8px 20px 0 rgba(0,0,0,.1),0 0 1px 0 rgba(0,0,0,.2);
-    --shadow-4: 0 12px 36px 0 rgba(0,0,0,.2),0 0 1px 0 rgba(0,0,0,.2);
-    --checkbox-bg: rgba(var(--rgba-black-white),0.25);
-    --checkbox-bg-checked: #9FD468;
-    --alert-inform-1: 20,65,110;
-    --purple-gradient-bg: linear-gradient(45deg,rgb(235,236,255) 1.13%,rgb(249,242,255) 100%);
-    background: var(--general-bg-project);
-    color: var(--general-color-main);
-    width: 100%;
-    height: auto;
-    font-weight: 400;
-    font-family: "Roboto",sans-serif;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
 }
 
 body hr {
