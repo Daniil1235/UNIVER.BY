@@ -11,3 +11,7 @@ class LicenseForm(ModelForm):
             'key': TextInput(attrs={'class': 'form-control',
                                     'placeholder': 'Ключ лицензии'}),
         }
+
+    def __init__(self, request=None, *args, **kwargs):
+        self.request = request
+        super(LicenseForm, self).__init__(*args, **kwargs)

@@ -1,14 +1,31 @@
 body {
     font-family: Arial, sans-serif;
-    transition: background-color 1s ease;
+    transition: 1.5s ease;
 }
+
 body.light-theme {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #fff;
+    color: #333;
+
+    --main-bg: #fff;
+    --main-fg: #333;
+
+
+    --message-success: #dfd;
+    --message-warning: #ffc;
+    --message-error: #ffefef;
 }
+
 body.dark-theme {
-    background-color: #2f2f2f;
-    color: #ffffff;
+    background-color: #121212;
+    color: #eeeeee;
+
+    --main-bg: #121212;
+    --main-fg: #eeeeee;
+
+    --message-success: #006b1b;
+    --message-warning: #583305;
+    --message-error: #570808;
 }
 
 a, .btn {
@@ -19,47 +36,28 @@ a:hover, .btn:hover {
     transform: scale(1.05);
 }
 
-
-
-.error {
-    font-size: 0.875rem;
-    font-weight: 700;
-    display: block;
-    padding: 10px 12px;
-    margin: 0 0 10px 0;
-    color: red;
-    border: 1px solid red;
-    border-radius: 4px;
-    background-position: 5px 12px;
-    overflow-wrap: break-word;
+div.messagelist {
+    padding: 0;
 }
 
-
-.success {
-    font-size: 0.875rem;
-    font-weight: 700;
+div.messagelist li {
     display: block;
-    padding: 10px 12px;
-    margin: 0 0 10px 0;
-    color: green;
-    border: 1px solid green;
-    border-radius: 4px;
-    background-position: 5px 12px;
-    overflow-wrap: break-word;
+    padding: 10px 10px 10px 65px;
+    background: var(--message-success) url(/static/admin/img/icon-yes.svg) 40px 12px no-repeat;
+    border-radius: 7px;
 }
 
+div.messagelist li.warning {
+    background: var(--message-warning) url(/static/admin/img/icon-alert.svg) 40px 14px no-repeat;
+}
 
-.warning {
-    font-size: 0.875rem;
-    font-weight: 700;
-    display: block;
-    padding: 10px 12px;
-    margin: 0 0 10px 0;
-    color: #ffc700;
-    border: 1px solid #ffc700;
-    border-radius: 4px;
-    background-position: 5px 12px;
-    overflow-wrap: break-word;
+div.messagelist li.error {
+    background: var(--message-error) url(/static/admin/img/icon-no.svg) 40px 12px no-repeat;
+}
+
+div.messagelist a {
+    color: var(--main-fg);
+    text-decoration: none;
 }
 
 
@@ -77,12 +75,4 @@ a:hover, .btn:hover {
 
 .justify {
     text-align: justify;
-}
-
-.alert-warning {
-    float: left;
-    clear: both;
-    width: 400px;
-    margin: 200px 34%;
-    text-align: left;
 }

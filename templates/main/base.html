@@ -54,11 +54,11 @@
                     <i class="fa-duotone fa-solid fa-right-to-bracket"></i> Вход</a>
             {% endif %}
         </div>
-        {% if messages %}
+        <div class="container messagelist">
             {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                <a href="{{ request.path }}"><li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li></a>
             {% endfor %}
-        {% endif %}
+        </div>
         <div class="container">
         {% block body %}{% endblock %}
         </div>
@@ -84,7 +84,7 @@
           <li class="nav-item mb-2"><a href="{% url 'pricing' %}" class="nav-link p-0 text-body-secondary link-success">Тарифы</a></li>
           <li class="nav-item mb-2"><a href="{% url 'premium_buy' %}" class="nav-link p-0 text-body-secondary link-success">Бот для оплаты</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Акции</a></li>
-          <li class="nav-item mb-2"><a href="#{% url 'premium_activate' %}" class="nav-link p-0 text-body-secondary link-success">Активация ключа</a></li>
+          <li class="nav-item mb-2"><a href="{% url 'premium_activate' %}" class="nav-link p-0 text-body-secondary link-success">Активация ключа</a></li>
         </ul>
       </div>
 
@@ -120,10 +120,9 @@
       <ul class="list-unstyled d-flex">
         <li class="ms-3"><a style="color: black;" class="link-body-emphasis" target="blank" href="https://t.me/univer_by">
             <i class="fa-brands fa-telegram fa-2xl"></i></a></li>
-        <li class="ms-3"><a style="color: black;" class="link-body-emphasis" target="blank" href="https://www.instagram.com/univerby/
-">
+        <li class="ms-3"><a style="color: black;" class="link-body-emphasis" target="blank" href="https://www.instagram.com/univerby/">
             <i class="fa-brands fa-instagram fa-2xl"></i></a></li>
-        <li class="ms-3"><a style="color: black;" class="link-body-emphasis" target="blank" href="https://www.youtube.com/@univerby">
+        <li class="ms-3"><a style="color: black;" class="link-body-emphasis" target="blank" href="https://www.youtube.com/@univer_by">
         <i class="fa-brands fa-youtube fa-2xl"></i></a></li>
         <li class="ms-3"><a style="color: black;" class="link-body-emphasis" target="blank" href="https://www.tiktok.com/@univerby">
             <i class="fa-brands fa-tiktok fa-2xl"></i></a></li>

@@ -34,6 +34,8 @@ class License(models.Model):
     time_limit = models.ForeignKey(TimeLimit, on_delete=models.CASCADE, verbose_name="Лимит")
     plan = models.ForeignKey(Plan, on_delete=models.CASCADE, verbose_name="План")
     key = models.CharField(max_length=100, verbose_name="Ключ")
+    used = models.BooleanField("Ключ использован", default=False)
+    expired = models.BooleanField("Срок истёк", default=False)
     expire_date = DateField("Дата окончания", null=True, blank=True)
 
     def __str__(self):
