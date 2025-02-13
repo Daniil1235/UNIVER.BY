@@ -6,85 +6,7 @@
 {% endblock %}
 
 {% block body %}
-    <!--suppress ALL -->
-    <style>
-        .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-}
-
-@media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-    }
-}
-
-.b-example-divider {
-    width: 100%;
-    height: 3rem;
-    background-color: rgba(0, 0, 0, .1);
-    border: solid rgba(0, 0, 0, .15);
-    border-width: 1px 0;
-    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-}
-
-.b-example-vr {
-    flex-shrink: 0;
-    width: 1.5rem;
-    height: 100vh;
-}
-
-
-.bi {
-    vertical-align: -.125em;
-    fill: currentColor;
-}
-
-.nav-scroller {
-    position: relative;
-    z-index: 2;
-    height: 2.75rem;
-    overflow-y: hidden;
-}
-
-.nav-scroller .nav {
-    display: flex;
-    flex-wrap: nowrap;
-    padding-bottom: 1rem;
-    margin-top: -1px;
-    overflow-x: auto;
-    text-align: center;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-}
-
-.btn-bd-primary {
-    --bd-violet-bg: #712cf9;
-    --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
-
-    --bs-btn-font-weight: 600;
-    --bs-btn-color: white;
-    --bs-btn-bg: var(--bd-violet-bg);
-    --bs-btn-border-color: var(--bd-violet-bg);
-    --bs-btn-hover-color: white;
-    --bs-btn-hover-bg: #6528e0;
-    --bs-btn-hover-border-color: #6528e0;
-    --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-    --bs-btn-active-color: var(--bs-btn-hover-color);
-    --bs-btn-active-bg: #5a23c8;
-    --bs-btn-active-border-color: #5a23c8;
-}
-
-.bd-mode-toggle {
-    z-index: 1500;
-}
-
-.bd-mode-toggle .dropdown-menu .active .bi {
-    display: block !important;}
-    </style>
+    <link rel="stylesheet" href="{% static 'main/css/index.css' %}">
     <main>
         <div class="px-4 py-5 my-5 text-center rounded-3 border shadow-lg">
             <img  class="d-block mx-auto mb-4" src="{% static 'main/img/Screenshot_9.png' %}" alt="" width="105" height="100">
@@ -94,13 +16,10 @@
                     свой путь в мире высшего образования. Мы предлагаем широкий спектр услуг, направленных на облегчение
                     процесса обучения
                     и обеспечение необходимой информацией для принятия взвешенного решения.</p>
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                </div>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center"></div>
             </div>
         </div>
-
         <p class="border-bottom"></p>
-
         <div class="px-4 pt-5 my-5 text-center border-bottom rounded-3 border shadow-lg">
             <h1 class="display-4 fw-bold text-body-emphasis">Удобный дизайн</h1>
             <div class="col-lg-6 mx-auto">
@@ -133,9 +52,7 @@
                 </div>
             </div>
         </div>
-
         <p class="border-bottom"></p>
-
         <div class="px-4 py-5 my-5 text-center rounded-3 border shadow-lg">
             <div class="row align-items-center g-lg-5 py-5 rounded-3 border shadow-lg">
                 <div class="col-lg-7 text-center text-lg-start">
@@ -148,9 +65,7 @@
                 </div>
             </div>
         </div>
-
         <p class="border-bottom"></p>
-
         <div class="container my-5">
             <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
                 <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
@@ -167,25 +82,19 @@
                 </div>
             </div>
         </div>
-
         <p class="border-bottom"></p>
-
         <div class="px-4 py-5 text-center rounded-3 border shadow-lg">
             <div class="py-5">
                 <h1 class="col-lg-6 mx-auto">Дополнительная информация</h1>
                 <div class="col-lg-6 mx-auto">
                     <p class="fs-5 mb-4">После регистрации вы сможете создавать свои материалы, загружать их на платформу и делиться ими с другими пользователями.
-
                         Если у вас возникнут вопросы или нужна помощь, вы всегда можете обратиться в службу поддержки. Мы постараемся помочь вам как можно быстрее.</p>
                     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                         <a class="btn btn-outline-success btn-lg px-4 gap-3" href="about"><i class="fa-solid fa-ellipsis"></i> Подробнее</a>
-
                     </div>
                 </div>
             </div>
         </div>
-
-        <p class="border-bottom"></p>
     </main>
 {% endblock %}
 

@@ -1,136 +1,135 @@
 {% load static %}
 <!doctype html>
-
-
-<!--suppress LongLine -->
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
-    <link rel="shortcut icon" href="{% static 'main/img/Screenshot_9.png' %}" />
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+        <link rel="shortcut icon" href="{% static 'main/img/Screenshot_9.png' %}" />
 
-    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'fontawesomefree/css/regular.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'fontawesomefree/css/regular.css' %}" rel="stylesheet" type="text/css">
 
-    <title>{% block title %} {% endblock %}</title>
-</head>
-<body>
-<div>
+        <title>{% block title %} {% endblock %}</title>
+    </head>
+    <body>
+        <div>
+            <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+                <div>
+                    <img style="width: 200px;" class="header__img" src="{% static 'main/img/Screenshot_1.png' %}" alt="Univer.By">
+                </div>
 
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4
-    border-bottom">
-        <div class="">
-            <img style="width: 200px;" class="header__img" src="{% static 'main/img/Screenshot_1.png' %}"
-                 alt="Univer.By">
+                <ul class="nav">
+                    <li><a href="{% url 'home' %}" class="nav-link px-2 link-success">Главная</a></li>
+                    <li><a href="{% url 'premium' %}" class="nav-link px-2 link-success">UniverPremium</a></li>
+                    <li><a href="" class="nav-link px-2 link-success">Институты</a></li>
+                    <li><a href="" class="nav-link px-2 link-success">UniverPublic</a></li>
+                    <li><a href="{% url 'about' %}" class="nav-link px-2 link-success">О нас</a></li>
+                </ul>
+                <button class="btn btn-outline-secondary" id="themeToggle"><i class="fa-duotone fa-solid fa-circle-half-stroke"></i></button>
+                <div>
+                    {% if user.is_authenticated %}
+                        Вошли как: <i class="fa-duotone fa-solid fa-user"></i>{{ user.username }} 
+                        {% if user.is_staff %}
+                            <a class="btn btn-outline-info btn-lg " href="/univeradminby/">
+                            <i class="fa-duotone fa-solid fa-user"></i> Админка</a>
+                        {% endif %}
+
+                     <a class="btn btn-outline-warning btn-lg px-4" href="{% url 'logout' %}?red={{ request.path }}">
+                            <i class="fa-duotone fa-solid fa-right-to-bracket"></i> Выход</a>
+                    {% else %}
+                        <a class="btn btn-success btn-lg px-4 gap-3" href="{% url 'register' %}?red={{ request.path }}">
+                            <i class="fa-duotone fa-solid fa-user"></i> Регистрация</a>
+                        <a class="btn btn-outline-success btn-lg px-4" href="{% url 'login' %}?red={{ request.path }}">
+                            <i class="fa-duotone fa-solid fa-right-to-bracket"></i> Вход</a>
+                    {% endif %}
+                </div>
+                <div class="container messagelist">
+                    {% for message in messages %}
+                        <a href="{{ request.path }}"><li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li></a>
+                    {% endfor %}
+                    {% if expire_soon %}
+                        <li class="warning">Ваша лицензия закончится через {{ days_left }} дней. Чтобы убрать уведомление, дождитесь окончания тарифа или купите новую.</li>
+                    {% endif %}
+                    {% if expired %}
+                        <a href="{{ request.path }}"><li class="error">Срок вашей лицензии истёк. Активирован базовай тариф.</li></a>
+                    {% endif %}
+                </div>
+                <div class="container">
+                {% block body %}{% endblock %}
+                </div>
+            </header>
+            <div class="container">
+                <footer class="py-5">
+                    <div class="row">
+                        <div class="col-6 col-md-2 mb-3">
+                            <h5>Главная</h5>
+                            <ul class="nav flex-column">
+                                <li class="nav-item mb-2"><a href="{% url 'home' %}" class="nav-link p-0 text-body-secondary link-success">Главная</a></li>
+                                <li class="nav-item mb-2"><a href="{% url 'about' %}" class="nav-link p-0 text-body-secondary link-success">О нас</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Универы</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Новостной блог</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Все функции сайта</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-6 col-md-2 mb-3">
+                            <h5>Премиум</h5>
+                            <ul class="nav flex-column">
+                                <li class="nav-item mb-2"><a href="{% url 'premium' %}" class="nav-link p-0 text-body-secondary link-success">UniverPremium</a></li>
+                                <li class="nav-item mb-2"><a href="{% url 'pricing' %}" class="nav-link p-0 text-body-secondary link-success">Тарифы</a></li>
+                                <li class="nav-item mb-2"><a href="{% url 'premium_buy' %}" class="nav-link p-0 text-body-secondary link-success">Бот для оплаты</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Акции</a></li>
+                                <li class="nav-item mb-2"><a href="{% url 'premium_activate' %}" class="nav-link p-0 text-body-secondary link-success">Активация ключа</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-6 col-md-2 mb-3">
+                            <h5>Аккаунт</h5>
+                            <ul class="nav flex-column">
+                                <li class="nav-item mb-2"><a href="{% url 'login' %}?red={{ request.path }}" class="nav-link p-0 text-body-secondary link-success">Вход</a></li>
+                                <li class="nav-item mb-2"><a href="{% url 'register' %}?red={{ request.path }}" class="nav-link p-0 text-body-secondary link-success">Регистрация</a></li>
+                                <li class="nav-item mb-2"><a href="{% url 'logout' %}?red={{ request.path }}" class="nav-link p-0 text-body-secondary link-success">Выход</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Статус</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Профиль</a></li>
+                            </ul>
+                      </div>
+
+                    <div class="col-md-5 offset-md-1 mb-3">
+                        <form>
+                            <h5>Подпишитесь на нашу рассылку</h5>
+                            <p>Ежемесячная сборка всего нового и интересного от нас.</p>
+                            <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                                <label for="newsletter1" class="visually-hidden">Email</label>
+                                <input id="newsletter1" type="text" class="form-control" placeholder="email@example.com">
+                                <input class="btn btn-outline-success" type="submit" value="Подписатся">
+                            </div>
+                            <p></p>
+                        </form>
+                   <button class="btn btn-outline-secondary" id="themeToggle2">
+                         <i class="fa-duotone fa-solid fa-circle-half-stroke"></i> Сменить тему</button>
+                   </div>
+                </div>
+
+                <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                    <p>© {{ year }} Univer.BY, Inc. Все права защищены.</p>
+                    <ul class="list-unstyled d-flex">
+                        <li class="ms-3"><a style="color: black;" class="link-body-emphasis" target="blank" href="https://t.me/univer_by">
+                            <i class="fa-brands fa-telegram fa-2xl"></i></a></li>
+                        <li class="ms-3"><a style="color: black;" class="link-body-emphasis" target="blank" href="https://www.instagram.com/univerby/">
+                            <i class="fa-brands fa-instagram fa-2xl"></i></a></li>
+                        <li class="ms-3"><a style="color: black;" class="link-body-emphasis" target="blank" href="https://www.youtube.com/@univer_by">
+                            <i class="fa-brands fa-youtube fa-2xl"></i></a></li>
+                        <li class="ms-3"><a style="color: black;" class="link-body-emphasis" target="blank" href="https://www.tiktok.com/@univerby">
+                            <i class="fa-brands fa-tiktok fa-2xl"></i></a></li>
+                    </ul>
+                </div>
+                </footer>
+            </div>
         </div>
-
-        <ul class="nav">
-            <li><a href="{% url 'home' %}" class="nav-link px-2 link-success">Главная</a></li>
-            <li><a href="{% url 'premium' %}" class="nav-link px-2 link-success">UniverPremium</a></li>
-            <li><a href="" class="nav-link px-2 link-success">Институты</a></li>
-            <li><a href="" class="nav-link px-2 link-success">UniverPublic</a></li>
-            <li><a href="{% url 'about' %}" class="nav-link px-2 link-success">О нас</a></li>
-        </ul>
-            <button class="btn btn-outline-secondary" id="themeToggle"><i class="fa-duotone fa-solid
-            fa-circle-half-stroke"></i></button>
-        <div class="">
-            {% if user.is_authenticated %}
-                Вошли как: <i class="fa-duotone fa-solid fa-user"></i>{{ user.username }} 
-                {% if user.is_staff %}
-                    <a class="btn btn-outline-info btn-lg " href="/univeradminby/">
-                    <i class="fa-duotone fa-solid fa-user"></i> Админка</a>
-                {% endif %}
-
-             <a class="btn btn-outline-warning btn-lg px-4" href="{% url 'logout' %}?red={{ request.path }}">
-                    <i class="fa-duotone fa-solid fa-right-to-bracket"></i> Выход</a>
-            {% else %}
-                <a class="btn btn-success btn-lg px-4 gap-3" href="{% url 'register' %}?red={{ request.path }}">
-                    <i class="fa-duotone fa-solid fa-user"></i> Регистрация</a>
-                <a class="btn btn-outline-success btn-lg px-4" href="{% url 'login' %}?red={{ request.path }}">
-                    <i class="fa-duotone fa-solid fa-right-to-bracket"></i> Вход</a>
-            {% endif %}
-        </div>
-        <div class="container messagelist">
-            {% for message in messages %}
-                <a href="{{ request.path }}"><li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li></a>
-            {% endfor %}
-        </div>
-        <div class="container">
-        {% block body %}{% endblock %}
-        </div>
-    </header>
-    <div class="container">
-  <footer class="py-5">
-    <div class="row">
-      <div class="col-6 col-md-2 mb-3">
-        <h5>Главная</h5>
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="{% url 'home' %}" class="nav-link p-0 text-body-secondary link-success">Главная</a></li>
-          <li class="nav-item mb-2"><a href="{% url 'about' %}" class="nav-link p-0 text-body-secondary link-success">О нас</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Универы</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Новостной блог</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Все функции сайта</a></li>
-        </ul>
-      </div>
-
-      <div class="col-6 col-md-2 mb-3">
-        <h5>Премиум</h5>
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="{% url 'premium' %}" class="nav-link p-0 text-body-secondary link-success">UniverPremium</a></li>
-          <li class="nav-item mb-2"><a href="{% url 'pricing' %}" class="nav-link p-0 text-body-secondary link-success">Тарифы</a></li>
-          <li class="nav-item mb-2"><a href="{% url 'premium_buy' %}" class="nav-link p-0 text-body-secondary link-success">Бот для оплаты</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Акции</a></li>
-          <li class="nav-item mb-2"><a href="{% url 'premium_activate' %}" class="nav-link p-0 text-body-secondary link-success">Активация ключа</a></li>
-        </ul>
-      </div>
-
-      <div class="col-6 col-md-2 mb-3">
-        <h5>Аккаунт</h5>
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="{% url 'login' %}?red={{ request.path }}" class="nav-link p-0 text-body-secondary link-success">Вход</a></li>
-          <li class="nav-item mb-2"><a href="{% url 'register' %}?red={{ request.path }}" class="nav-link p-0 text-body-secondary link-success">Регистрация</a></li>
-          <li class="nav-item mb-2"><a href="{% url 'logout' %}?red={{ request.path }}" class="nav-link p-0 text-body-secondary link-success">Выход</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Статус</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary link-success">Профиль</a></li>
-        </ul>
-      </div>
-
-      <div class="col-md-5 offset-md-1 mb-3">
-        <form>
-          <h5>Подпишитесь на нашу рассылку</h5>
-          <p>Ежемесячная сборка всего нового и интересного от нас.</p>
-          <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-            <label for="newsletter1" class="visually-hidden">Email</label>
-            <input id="newsletter1" type="text" class="form-control" placeholder="email@example.com">
-            <input class="btn btn-outline-success" type="submit" value="Подписатся">
-          </div>
-         <p></p>
-        </form>
-       <button class="btn btn-outline-secondary" id="themeToggle2">
-             <i class="fa-duotone fa-solid fa-circle-half-stroke"></i> Сменить тему</button>
-      </div>
-    </div>
-
-    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-      <p>© 2025 Univer.BY, Inc. Все права защищены.</p>
-      <ul class="list-unstyled d-flex">
-        <li class="ms-3"><a style="color: black;" class="link-body-emphasis" target="blank" href="https://t.me/univer_by">
-            <i class="fa-brands fa-telegram fa-2xl"></i></a></li>
-        <li class="ms-3"><a style="color: black;" class="link-body-emphasis" target="blank" href="https://www.instagram.com/univerby/">
-            <i class="fa-brands fa-instagram fa-2xl"></i></a></li>
-        <li class="ms-3"><a style="color: black;" class="link-body-emphasis" target="blank" href="https://www.youtube.com/@univer_by">
-        <i class="fa-brands fa-youtube fa-2xl"></i></a></li>
-        <li class="ms-3"><a style="color: black;" class="link-body-emphasis" target="blank" href="https://www.tiktok.com/@univerby">
-            <i class="fa-brands fa-tiktok fa-2xl"></i></a></li>
-      </ul>
-    </div>
-  </footer>
-</div>
-</div>
-<script src="{% static 'main/js/script.js' %}"></script>
-</body>
+    <script src="{% static 'main/js/script.js' %}"></script>
+    </body>
 </html>

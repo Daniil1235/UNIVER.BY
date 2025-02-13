@@ -1,4 +1,6 @@
-import datetime
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+
 from django.shortcuts import render, redirect
 from .forms import LicenseForm
 from .models import License
@@ -24,39 +26,20 @@ def premium_activate(request):
         form = LicenseForm(request, data=request.POST)
         if form.is_valid():
             key = form.cleaned_data.get("key")
-
             if License.objects.filter(key=key):
-                request.user.license_key = License.objects.get(key=key)
-                request.user.licensed = True
-                request.user.save()
                 licensee = License.objects.get(key=key)
                 if not licensee.used:
-                    date = datetime.date.today()
-                    year = date.year
-                    month = date.month
-                    day = date.day
+                    request.user.license_key = License.objects.get(key=key)
+                    request.user.licensed = True
+                    request.user.save()
+                    today = datetime.today()
+                    if licensee.time_limit.name[0:2] == '12':
+                        duration_months = int(licensee.time_limit.name[0:2])
+                    else:
+                        duration_months = int(licensee.time_limit.name[0])
+                    expire_date = today + relativedelta(months=duration_months)
 
-                    if licensee.time_limit.name == "12 месяцев":
-                        licensee.expire_date = f"{year + 1}-{month}-{day}"
-                    if licensee.time_limit.name == "6 месяцев":
-                        if month <= 6:
-                            licensee.expire_date = f"{year}-{month + 6}-{day}"
-                        else:
-                            ost = 12 - month
-                            licensee.expire_date = f"{year + 1}-{1 + ost}-{day}"
-                    if licensee.time_limit.name == "3 месяца":
-                        if month <= 9:
-                            licensee.expire_date = f"{year}-{month + 3}-{day}"
-                        else:
-                            ost = 12 - month
-                            licensee.expire_date = f"{year + 1}-{1 + ost}-{day}"
-                    if licensee.time_limit.name == "1 месяц":
-                        if month <= 11:
-                            licensee.expire_date = f"{year}-{month + 1}-{day}"
-                        else:
-                            ost = 12 - month
-                            licensee.expire_date = f"{year + 1}-{1 + ost}-{day}"
-
+                    licensee.expire_date = expire_date
                     licensee.used = True
                     licensee.save()
                     messages.success(request, "Ваша лицензия успешно активирована")
@@ -69,4 +52,4 @@ def premium_activate(request):
             messages.warning(request, "При обработке произошла ошибка")
 
     form = LicenseForm()
-    return render(request, "premium/activate.html", {"form": form})
+    return render(request, "premium/activate.html", {"form": form, "range": range(1, 7)})

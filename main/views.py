@@ -4,6 +4,43 @@ from django.views.generic import UpdateView, DeleteView
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
+import datetime
+from calendar import monthrange
+
+
+def cur_date(request):
+    date = datetime.date.today()
+    year = date.year
+    month = date.month
+    day = date.day
+    return {"year": year,
+            "month": month,
+            "day": day}
+
+
+def check_license(request):
+    user = request.user
+    expire_soon = False
+    days_left = 0
+    expired = False
+    if user.is_authenticated and user.licensed:
+        day = user.license_key.expire_date.day
+        month = user.license_key.expire_date.month
+        year = user.license_key.expire_date.year
+        today = datetime.datetime.today()
+
+        expiry_date = datetime.datetime(year, month, day)
+        days_left = (expiry_date - today).days + 1
+        expire_soon = True if days_left <= 15 else False
+        if days_left <= 0:
+            expired = True
+            expire_soon = False
+            user.license_key.expired = True
+            user.license_key.save()
+            user.license_key = None
+            user.licensed = False
+            user.save()
+    return {"expire_soon": expire_soon, "days_left": days_left, "expired": expired}
 
 
 def index(request):
