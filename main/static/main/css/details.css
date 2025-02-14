@@ -1,0 +1,27 @@
+details {
+  position: relative;
+}
+
+.bs-popover-right {
+  transform: translate(calc(100% + 0.5rem), 0);
+  top: -25px;
+}
+
+.bs-popover-right .arrow {
+  top: 50%;
+  margin: 0;
+  transform: translate(0, -50%);
+}
+
+.bs-popover-top {
+  transform: translate(0, calc(-100% - 0.5rem));
+}
+
+.bs-popover-top .arrow {
+  left: 50%;
+  transform: translate(50%, 0);
+}
+
+body {
+  padding: 2rem 5rem;
+}

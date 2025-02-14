@@ -1,0 +1,24 @@
+{
+  "name": "univer.by",
+  "version": "0.3.0",
+  "description": "[![](https://img.shields.io/badge/Версия-0.2.0-blue)](https://github.com/andreenkodaniel70/UNIVER.BY/blob/master/changelogs/v.%200.2.md)\r [![](https://img.shields.io/badge/Лицензия-MIT-maroon)](https://github.com/andreenkodaniel70/UNIVER.BY/blob/master/LICENSE)\r [![](https://img.shields.io/badge/Сайт-Univer.by-2bc700)](https://univer.by)",
+  "homepage": "https://github.com/andreenkodaniel70/UNIVER.BY#readme",
+  "bugs": {
+    "url": "https://github.com/andreenkodaniel70/UNIVER.BY/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreenkodaniel70/UNIVER.BY.git"
+  },
+  "license": "MIT",
+  "author": "daniil12351577",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "stylelint": "^16.14.1",
+    "stylelint-config-standard": "^37.0.0"
+  }
+}

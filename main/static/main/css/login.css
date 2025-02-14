@@ -4,7 +4,7 @@ body {
 }
 
 .form-signin {
-  max-width: 330px;
+  max-width: 400px;
   padding: 1rem;
 }
 
@@ -12,8 +12,23 @@ body {
   z-index: 2;
 }
 
-.form-signin input[type="text"], .form-signin input[type="email"], .form-signin input[type="password"] {
-  margin-bottom: 5px;
+.form-signin input[name="username"], .form-signin input[type="text"] {
+  margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+.form-signin input[name="password"], .form-signin input[name="password2"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-signin input[name="email"], .form-signin input[name="password1"] {
+  margin-bottom: -1px;
+  border-radius: 0;
+}
+
+div label {
+  text-align: center;
 }
