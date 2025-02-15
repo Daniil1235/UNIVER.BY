@@ -9,8 +9,6 @@ body.light-theme {
 
     --main-bg: #fff;
     --main-fg: #333;
-
-
     --message-success: #dfd;
     --message-warning: #ffc;
     --message-error: #ffefef;
@@ -18,11 +16,10 @@ body.light-theme {
 
 body.dark-theme {
     background-color: #121212;
-    color: #eeeeee;
+    color: #eee;
 
     --main-bg: #121212;
-    --main-fg: #eeeeee;
-
+    --main-fg: #eee;
     --message-success: #006b1b;
     --message-warning: #583305;
     --message-error: #570808;
@@ -43,16 +40,16 @@ div.messagelist {
 div.messagelist li {
     display: block;
     padding: 10px 10px 10px 65px;
-    background: var(--message-success) url(/static/admin/img/icon-yes.svg) 40px 12px no-repeat;
+    background: var(--message-success) url("/static/admin/img/icon-yes.svg") 40px 12px no-repeat;
     border-radius: 7px;
 }
 
 div.messagelist li.warning {
-    background: var(--message-warning) url(/static/admin/img/icon-alert.svg) 40px 14px no-repeat;
+    background: var(--message-warning) url("/static/admin/img/icon-alert.svg") 40px 14px no-repeat;
 }
 
 div.messagelist li.error {
-    background: var(--message-error) url(/static/admin/img/icon-no.svg) 40px 12px no-repeat;
+    background: var(--message-error) url("/static/admin/img/icon-no.svg") 40px 12px no-repeat;
 }
 
 div.messagelist a {
