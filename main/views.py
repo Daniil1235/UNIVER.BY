@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from .forms import NewUserForm
 from django.views.generic import UpdateView, DeleteView
 from django.contrib.auth import login, authenticate, logout
@@ -45,6 +45,7 @@ def check_license(request):
 
 def index(request):
     return render(request, "main/index.html")
+
 
 
 def about(request):
