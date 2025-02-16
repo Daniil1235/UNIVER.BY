@@ -6,6 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 import datetime
 from calendar import monthrange
+from .models import Type
 
 
 def cur_date(request):
@@ -62,7 +63,8 @@ def register_request(request):
             messages.success(request, "Успешная регистрация")
             return redirect(red)
         messages.error(request, "При регистрации произошла ошибка. Убедитесь, что данные введены верно")
-    return render(request=request, template_name="main/register.html")
+    form = NewUserForm()
+    return render(request=request, template_name="main/register.html", context={"form": form, "types": Type.objects.all()})
 
 
 def login_request(request):
